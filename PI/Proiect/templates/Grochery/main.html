@@ -1,0 +1,24 @@
+
+{% extends "Grochery/base.html" %}
+{% load static %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+    <div class="jumbotron">
+        <h1>Bine ai venit, {{ user.username }}!</h1>
+        <p>Aici este conținutul special pentru utilizatorii autentificați.</p>
+        <a class="btn btn-primary" href="{% url 'Grochery:food_list' %}">Vezi Lista de Alimente</a>
+        <a class="btn btn-success" href="{% url 'Grochery:add_food' %}">Adaugă Aliment in Lista de Alimente</a>
+        <a class="btn btn-info" href="{% url 'Grochery:shopping_lists' %}">Liste de Cumpărături</a>
+
+    </div>
+{% else %}
+    <div class="jumbotron">
+        <h1>Acces interzis!</h1>
+        <p>Această pagină este disponibilă doar utilizatorilor autentificați. Te rugăm să te autentifici sau să îți creezi un cont.</p>
+        <a class="btn btn-primary" href="{% url 'Grochery:user_login' %}">Login</a>
+        <a class="btn btn-success" href="{% url 'Grochery:register' %}">Register</a>
+    </div>
+{% endif %}
+
+{% endblock %}

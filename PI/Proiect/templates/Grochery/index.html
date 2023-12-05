@@ -1,0 +1,12 @@
+{% extends "Grochery/base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron">
+    <h1>Index</h1>
+    <p>Bine ați venit! Alegeți opțiunea dorită:</p>
+    <a class="btn btn-primary" href="{% url 'Grochery:user_login' %}">Login</a>
+    <a class="btn btn-success" href="{% url 'Grochery:register' %}">Register</a>
+</div>
+{% endblock %}

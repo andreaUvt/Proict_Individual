@@ -1,0 +1,20 @@
+<!-- Grochery/shopping_lists.html -->
+
+{% extends "Grochery/base.html" %}
+{% block body_block %}
+
+<div class="container">
+    <h1>Liste de cumpărături</h1>
+    <ul>
+        {% for shopping_list in user_lists %}
+            <li>
+                <a href="{% url 'Grochery:shopping_list_detail' shopping_list.id %}">
+                    {{ shopping_list.name }} - {{ shopping_list.meal }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary" href="{% url 'Grochery:add_shopping_list' %}">Adaugă listă</a>
+</div>
+
+{% endblock %}

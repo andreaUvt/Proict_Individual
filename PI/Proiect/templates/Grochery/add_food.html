@@ -1,0 +1,14 @@
+
+<div class="jumbotron">
+    <h2>Adauga un nou aliment</h2>
+    <form method="post" action="{% url 'Grochery:add_food' %}">
+      {% csrf_token %}
+  
+      {{ form.as_p}}
+  
+      <button type="submit">Adauga aliment</button>
+    </form>
+    <br>
+    <a href="{% url 'index' %}"><button>Înapoi la Index</button></a>
+</div>
+

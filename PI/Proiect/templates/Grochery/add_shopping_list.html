@@ -1,0 +1,14 @@
+{% extends "Grochery/base.html" %}
+{% block body_block %}
+
+<div class="container">
+    <h1>Adaugă listă de cumpărături</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="" value="Salvează listă">
+    </form>
+    <a class="btn btn-secondary" href="{% url 'Grochery:shopping_lists' %}">Înapoi la listele de cumpărături</a>
+</div>
+
+{% endblock %}

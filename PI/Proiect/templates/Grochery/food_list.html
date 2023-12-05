@@ -1,0 +1,29 @@
+<h2>Lista de alimente</h2>
+<form method="get" action="{% url 'Grochery:food_list' %}">
+    <label for="sort">Sortează după:</label>
+    <select name="sort" id="sort">
+        <option value="name">Alfabetic</option>
+        <option value="-name">Alfabetic invers</option>
+        <option value="is_favorite">Favorite</option>
+    </select>
+    <button type="submit">Sortează</button>
+</form>
+
+
+<ul>
+    {% for food in foods %}
+        <li>{{ food.name }} - {{ food.price }} {% if food.is_favorite %}(Favorit){% endif %}
+            
+            <a href="{% url 'Grochery:edit_food' food.id %}"><button>Editează</button></a>
+            <form method="post" action="{% url 'Grochery:delete_food' food.id %}" style="display:inline;">
+                {% csrf_token %}
+                <input type="submit" value="Sterge">
+            </form>
+        </li>
+        
+    {% endfor %}
+</ul>
+
+
+<a href="{% url 'Grochery:add_food' %}"><button>Adauga aliment</button></a>
+<a href="{% url 'index' %}"><button>Înapoi la Index</button></a>
