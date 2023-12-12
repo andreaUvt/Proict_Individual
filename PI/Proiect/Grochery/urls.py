@@ -13,5 +13,6 @@ urlpatterns=[
     path('delete_food/<int:food_id>/',views.delete_food,name='delete_food'),
     path('main_page/',views.main_page, name='main_page'),
     path('shopping_lists/', views.shopping_lists, name='shopping_lists'),
+    path('reset_password/',views.reset_password,name='reset_password'),
     
 ]

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser,Group,Permission
 from django.utils import timezone
 
 # Create your models here.
@@ -16,7 +16,7 @@ class Food(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     is_favorite = models.BooleanField(default=False)
     users = models.ManyToManyField(User, related_name='foods')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=timezone.now)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     
     def __str__(self):
         return self.name
@@ -45,3 +45,10 @@ class FavoriteFood(models.Model):
     
     def __str__(self):
         return f"{self.user.username} - {self.food.name}"
+    
+class CustomUser(AbstractUser):
+    reset_token = models.CharField(max_length=255, blank=True, null=True)
+    
+    # Adaugă related_name pentru a evita conflictele
+    groups = models.ManyToManyField(Group, verbose_name='groups', blank=True, related_name='customuser_set')
+    user_permissions = models.ManyToManyField(Permission, verbose_name='user permissions', blank=True, related_name='customuser_set')

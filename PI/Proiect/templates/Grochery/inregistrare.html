@@ -1,12 +1,12 @@
 {% extends "Grochery/base.html" %}
-{% load static %}
-{% block body_block %}
+
+{% block content %}
 
 <div class="jumbotron">
     {% if registered %}
         <h1>Mulțumim pentru înregistrare!</h1>
         <!-- Adaugă un buton pentru a merge la pagina de login -->
-        <a class="btn btn-primary" href="{% url 'Grochery:user_logi' %}">Login</a>
+        <a class="btn btn-primary" href="{% url 'Grochery:user_login' %}">Login</a>
     {% else %}
         <h1>Înregistrează-te aici</h1>
         <h3>Completează formularul</h3>

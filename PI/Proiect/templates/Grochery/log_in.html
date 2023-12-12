@@ -1,5 +1,6 @@
 {% extends "Grochery/base.html" %}
-{% block body_block%}
+
+{% block content %}
 
 <div class="jumbotron">
     <h1>Please login</h1>
@@ -13,6 +14,8 @@
     
         <input type="submit" value="Login">
     </form>
+
+    <p>Forgot your password? <a href="{% url 'Grochery:reset_password' %}">Reset it here</a>.</p>
 </div>
 
 {% endblock %}
